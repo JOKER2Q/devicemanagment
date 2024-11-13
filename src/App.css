@@ -1,10 +1,9 @@
-
-*{
+* {
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
+  font-family: "Afacad Flux", sans-serif;
 }
-
 
 .App {
   text-align: center;
@@ -47,7 +46,6 @@
   }
 }
 
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -83,7 +81,6 @@
   font-weight: normal;
   color: #1d1818;
 }
-
 
 .profileSection {
   display: flex;
@@ -191,4 +188,22 @@
   margin: 0;
   font-size: 1em;
   color: #ccc;
+}
+
+.main-container {
+  height: 100%;
+  width: calc(100% - 100px);
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-content: flex-end;
+}
+.pad-40 {
+  padding: 40px 5%;
+}
+
+.flex {
+  display: flex;
+}
+.center {
+  align-items: center;
 }

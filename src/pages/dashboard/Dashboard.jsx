@@ -12,7 +12,6 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       <Sidebar />
-      <main className="main-content">
         <Routes>
           <Route path="overview" element={<Overview />} />
           <Route path="devices" element={<Devices />}>
@@ -23,7 +22,6 @@ function Dashboard() {
           <Route path="logs" element={<Logs />} />
           <Route path="/" element={<Overview />} />
         </Routes>
-      </main>
     </div>
   );
 }

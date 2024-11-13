@@ -1,0 +1,106 @@
+.device-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px;
+  background: #333;
+  border-radius: 10px;
+}
+.device-header .device-info {
+  display: flex;
+  list-style: none;
+  width: 60%;
+  justify-content: space-between;
+}
+.device-header .device-info li {
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+}
+.device-header .input-container {
+  position: relative;
+}
+.device-header .input-container input[type="radio"] {
+  position: absolute;
+  color: #fff;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.device-header .input-container i:hover {
+}
+.device-header .input-container input[type="text"] {
+  padding: 5px 10px;
+  font-size: 18px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #00000033;
+}
+.device-header .input-container input[type="text"]::placeholder {
+  margin-left: 20px;
+  font-size: 13px;
+  color: #fff;
+  opacity: 0.7;
+}
+.device-header .input-container .checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 18px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.device-header .input-container .checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.device-header .input-container .checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 18px;
+}
+.device-header .input-container .checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.device-header .input-container .slider {
+  position: relative;
+  display: inline-block;
+  width: 31px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: background-color 0.2s;
+}
+.device-header .input-container .slider:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  left: 4px;
+  transition: transform 0.2s;
+}
+.device-header .input-container .checkbox input:checked + .slider {
+  background-color: #0e6e11;
+}
+.device-header .input-container .checkbox input:checked + .slider:before {
+  transform: translateX(15px);
+}
