@@ -1,0 +1,144 @@
+.users-container {
+  height: 100%;
+  width: calc(100% - 70px);
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabs Header */
+.users-container .tabs-header {
+  display: flex;
+  border-bottom: 2px solid #f1f1f1;
+  margin-top: 20px;
+}
+
+.users-container .tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #e6e6e6;
+  color: var(--section-color);
+  font-weight: bold;
+  outline: none;
+  transition: background-color 0.3s;
+  margin-right: 4px;
+  border-radius: 4px 4px 0 0;
+}
+
+.users-container .tab-button:not(.active):hover {
+  background-color: var(--section-color);
+  color: var(--font-color);
+}
+
+/* Active Tab */
+.users-container .tab-button.active {
+  background-color: var(--section-color);
+  color: var(--font-color);
+  border-bottom: 2px solid var(--section-color);
+}
+
+/* Tabs Content */
+.users-container .tabs-content {
+  padding: 20px;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-top: none;
+  margin-top: -1px;
+  border-radius: 0 0 8px 8px;
+}
+.users-container .file-manager {
+  padding: 0px;
+  border: none;
+}
+
+.users-container .tab-content {
+  margin-top: 10px;
+}
+/*ADD USER CSS STARTS HERE*/
+.add-user-form {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.add-user-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+/* Form fields */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #d1d1d1;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #333333;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: #2c2c2c;
+  color: #ffffff;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+/* Checkbox group */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox-item {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.checkbox-item input {
+  margin-right: 10px;
+}
+
+.checkbox-item label {
+  color: #d1d1d1;
+  font-size: 14px;
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+/*ADD USER CSS ENDS HERE*/
