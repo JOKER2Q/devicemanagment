@@ -1,25 +1,228 @@
+/*devices css start here you should move to another file*/
+.devices {
+  overflow-y: auto;
+  width: 300px;
+  background-color: #4f565f;
+  color: #333;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+}
+
+.devices h2 {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #48576d;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+}
+
+.tab {
+  padding: 10px 20px;
+  font-size: 1.1em;
+  cursor: pointer;
+  border: 1px solid #00000024;
+  border-radius: 5px;
+  margin: 0 10px;
+  transition: background-color 0.3s;
+  color: #c1c1c1;
+  font-weight: bold;
+}
+.tab:hover {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.tab.active {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-card {
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+  padding: 0px 10px;
+  background-color: var(--section-color);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.chat-card i {
+  font-size: 30px;
+  color: var(--font-color);
+  padding: 20px;
+}
+.chat-card:hover {
+  background-color: #313641;
+}
+.chat-card.active {
+  background-color: #313641;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+  background-color: #446aa3;
+}
+
+.chat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0;
+  color: var(--font-color);
+  align-items: start;
+}
+
+.chat-type {
+  font-size: 0.9em;
+  color: var(--font-color);
+  margin: 5px 0 0 0;
+  align-items: start;
+}
+
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+}
+
+.chat-page h2 {
+  text-align: center;
+  color: #48576d;
+}
+
+.chat-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow-y: auto;
+}
+
+.message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 70%;
+}
+
+.message.received {
+  background-color: #ececec;
+  align-self: flex-start;
+}
+
+.message.sent {
+  background-color: #48576d;
+  color: white;
+  align-self: flex-end;
+}
+
+.chat-input {
+  display: flex;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+.chat-input button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #48576d;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+.devices-container-d {
+  display: flex;
+  height: 100%;
+  width: calc(100% - 70px);
+}
+
+.sidebar-device-d {
+  width: 300px;
+  background-color: var(--body-color);
+  box-shadow: 4px -1px 8px rgb(0 0 0 / 67%);
+  z-index: 10;
+  color: #fff;
+  padding: 20px;
+  overflow-y: auto;
+}
+.device-content-d {
+  flex: 1;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
 .device-header {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 20px;
-  background: #333;
+  padding: 20px 10px;
+  background-color: var(--body-color);
   border-radius: 10px;
 }
 .device-header .device-info {
   display: flex;
-  list-style: none;
-  width: 60%;
   justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
 }
+
+.device-header .device-info .info .photo {
+  background-color: #f0f1f3;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  border-radius: 50%;
+  margin-right: 5px;
+  object-fit: cover;
+  font-size: 14px;
+  color: var(--section-color);
+}
+
+.device-header .device-info .info h4,
+.device-header .device-info .info p {
+  text-transform: capitalize;
+  line-height: 1;
+  color: var(--font-color);
+  font-size: 13px;
+  padding: 2px;
+}
+
 .device-header .device-info li {
   font-size: 18px;
-  color: #fff;
+  color: var(--font-color);
   font-weight: bold;
 }
 .device-header .input-container {
   position: relative;
+  flex: 1;
 }
 .device-header .input-container input[type="radio"] {
   position: absolute;
@@ -28,22 +231,24 @@
   top: 50%;
   transform: translateY(-50%);
 }
-.device-header .input-container i:hover {
-}
+
 .device-header .input-container input[type="text"] {
-  padding: 5px 10px;
+  padding: 6px 15px;
   font-size: 18px;
   color: #fff;
   background: transparent;
   border: none;
   outline: none;
   border-bottom: 1px solid #00000033;
+  width: 100%;
+  background: #292a2b;
+  border-radius: 6px;
 }
 .device-header .input-container input[type="text"]::placeholder {
   margin-left: 20px;
   font-size: 13px;
   color: #fff;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 .device-header .input-container .checkbox {
   display: flex;
@@ -56,27 +261,27 @@
   top: 50%;
   transform: translateY(-50%);
 }
-.device-header .input-container .checkbox input {
+.device-header .checkbox input {
   opacity: 0;
   width: 0;
   height: 0;
   position: absolute;
 }
 
-.device-header .input-container .checkbox {
+.device-header .checkbox {
   display: flex;
   align-items: center;
   cursor: pointer;
   user-select: none;
   font-size: 18px;
 }
-.device-header .input-container .checkbox input {
+.device-header .checkbox input {
   opacity: 0;
   width: 0;
   height: 0;
   position: absolute;
 }
-.device-header .input-container .slider {
+.device-header .slider {
   position: relative;
   display: inline-block;
   width: 31px;
@@ -88,7 +293,7 @@
   border-radius: 20px;
   transition: background-color 0.2s;
 }
-.device-header .input-container .slider:before {
+.device-header .slider:before {
   content: "";
   position: absolute;
   border-radius: 50%;
@@ -98,9 +303,85 @@
   left: 4px;
   transition: transform 0.2s;
 }
-.device-header .input-container .checkbox input:checked + .slider {
+.device-header .checkbox input:checked + .slider {
   background-color: #0e6e11;
 }
-.device-header .input-container .checkbox input:checked + .slider:before {
+.device-header .checkbox input:checked + .slider:before {
   transform: translateX(15px);
 }
+
+.device-header .device-info .information {
+  gap: 20px;
+}
+.device-header .device-info .information .info-column {
+  align-items: flex-start;
+  gap: 5px;
+  padding: 3px 0px;
+  justify-content: space-around;
+}
+.device-info .information .info-column .info-div {
+  gap: 5px;
+  color: var(--font-color);
+}
+.device-info .information .info-column .info-div .time-now {
+  padding: 4px 6px;
+  background-color: var(--section-color);
+  border-radius: 6px;
+  color: var(--font-color);
+}
+.device-info .information .info-column .info-div i {
+}
+.device-info .information .info-column .info-div p {
+  font-size: 12px;
+}
+
+/* Tabs Header */
+.device .tabs-header {
+  display: flex;
+  border-bottom: 2px solid #f1f1f1;
+  margin-top: 20px;
+}
+
+.device .tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #e6e6e6;
+  color: var(--section-color);
+  font-weight: bold;
+  outline: none;
+  transition: background-color 0.3s;
+  margin-right: 4px;
+  border-radius: 4px 4px 0 0;
+}
+
+.device .tab-button:not(.active):hover {
+  background-color: var(--section-color);
+  color: var(--font-color);
+}
+
+/* Active Tab */
+.device .tab-button.active {
+  background-color: var(--section-color);
+  color: var(--font-color);
+  border-bottom: 2px solid var(--section-color);
+}
+
+/* Tabs Content */
+.device .tabs-content {
+  padding: 20px;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-top: none;
+  margin-top: -1px;
+  border-radius: 0 0 8px 8px;
+}
+.device .file-manager {
+  padding: 0px;
+  border: none;
+}
+
+.device .tab-content {
+  margin-top: 10px;
+}
+/*devices css end here you should not go under this comment*/
