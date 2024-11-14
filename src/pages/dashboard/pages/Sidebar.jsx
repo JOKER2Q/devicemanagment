@@ -7,7 +7,7 @@ function Sidebar() {
       <ul className="sidebar-icons">
         <li>
           <NavLink
-            to="/dashboard/overview"
+            to="/overview"
             className={({ isActive }) =>
               `nav-link ${isActive ? "active-tab" : ""}`
             }
@@ -18,7 +18,7 @@ function Sidebar() {
         </li>
         <li>
           <NavLink
-            to="/dashboard/devices"
+            to="/devices"
             className={({ isActive }) =>
               `nav-link ${isActive ? "active-tab" : ""}`
             }
@@ -29,7 +29,7 @@ function Sidebar() {
         </li>
         <li>
           <NavLink
-            to="/dashboard/users"
+            to="/users"
             className={({ isActive }) =>
               `nav-link ${isActive ? "active-tab" : ""}`
             }
@@ -40,7 +40,7 @@ function Sidebar() {
         </li>
         <li>
           <NavLink
-            to="/dashboard/settings"
+            to="/settings"
             className={({ isActive }) =>
               `nav-link ${isActive ? "active-tab" : ""}`
             }
@@ -51,7 +51,7 @@ function Sidebar() {
         </li>
         <li>
           <NavLink
-            to="/dashboard/logs"
+            to="/logs"
             className={({ isActive }) =>
               `nav-link ${isActive ? "active-tab" : ""}`
             }

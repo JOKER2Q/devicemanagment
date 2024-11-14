@@ -4,7 +4,13 @@
   box-sizing: border-box;
   font-family: "Afacad Flux", sans-serif;
 }
-
+body {
+  --border-color: #83838340;
+  --body-color: #141419;
+  --section-color: #181a1e;
+  --font-color: #ccc;
+  --box-shadow: 0 0 16px #171717;
+}
 .App {
   text-align: center;
   width: 100%;
@@ -206,4 +212,14 @@
 }
 .center {
   align-items: center;
+  justify-content: center;
+}
+a {
+  text-decoration: none;
+}
+input {
+  outline: none;
+}
+.column {
+  flex-direction: column;
 }

@@ -2,7 +2,7 @@
 .sidebar {
   width: 80px;
   padding: 0px 10px 0px 30px;
-  background-color: #313641;
+  background-color: var(--section-color);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -54,8 +54,8 @@
 }
 
 .sidebar-icons li:hover {
-  color: #fff;
   transform: scale(1.1);
+  opacity: 1;
 }
 
 .nav-link {
@@ -67,12 +67,13 @@
 .sidebar-icons i {
   font-size: 20px;
   margin-right: 10px;
-  color: #000;
+  color: var(--font-color);
   transition: 0.3s ease;
+  opacity: 0.5;
 }
 /* Active tab style */
 .active-tab i {
-  color: #ccc !important; /* Light green */
+  opacity: 1;
 }
 
 /* Sidebar text */
@@ -81,9 +82,12 @@
   font-size: 18px;
   margin-left: 5px;
   line-height: 1;
+  color: var(--font-color);
+  transition: 0.3s ease;
+  opacity: 0.5;
 }
 .active-tab span {
-  color: #ccc;
+  opacity: 1;
 }
 
 /* Add transition effect when sidebar expands */
@@ -110,7 +114,7 @@
   transition: margin-left 0.3s ease;
   margin-top: 50px;
   display: flex;
-  height: calc(100vh + 50px);
+  height: calc(100vh + 71px);
   justify-content: flex-end;
 }
 
@@ -160,185 +164,3 @@
   color: #333;
   margin-bottom: 10px;
 }
-
-/*devices css start here you should move to another file*/
-.devices {
-  overflow-y: auto;
-  width: 300px;
-  background-color: #4f565f;
-  color: #333;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  height: 100%;
-}
-
-.devices h2 {
-  text-align: center;
-  font-size: 1.5em;
-  margin-bottom: 15px;
-  color: #48576d;
-}
-
-.tabs {
-  display: flex;
-  justify-content: center;
-}
-
-.tab {
-  padding: 10px 20px;
-  font-size: 1.1em;
-  cursor: pointer;
-  border: 1px solid #00000024;
-  border-radius: 5px;
-  margin: 0 10px;
-  transition: background-color 0.3s;
-  color: #c1c1c1;
-  font-weight: bold;
-}
-.tab:hover {
-  background-color: #ffffff;
-  color: #000000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.tab.active {
-  background-color: #ffffff;
-  color: #000000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.chat-card {
-  display: flex;
-  align-items: center;
-
-  text-decoration: none;
-  padding: 0px 10px;
-  background-color: #000;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.2s;
-  margin-top: 15px;
-  cursor: pointer;
-}
-.chat-card i {
-  font-size: 30px;
-  color: #fff;
-  padding: 20px;
-}
-.chat-card:hover {
-  background-color: #313641;
-}
-.chat-card.active {
-  background-color: #313641;
-}
-
-.profile-pic {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 15px;
-  background-color: #446aa3;
-}
-
-.chat-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.chat-name {
-  font-size: 1.1em;
-  font-weight: bold;
-  margin: 0;
-  color: #e6e0e0;
-  align-items: start;
-}
-
-.chat-type {
-  font-size: 0.9em;
-  color: #969494;
-  margin: 5px 0 0 0;
-  align-items: start;
-}
-
-.chat-page {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  padding: 20px;
-}
-
-.chat-page h2 {
-  text-align: center;
-  color: #48576d;
-}
-
-.chat-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  overflow-y: auto;
-}
-
-.message {
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 8px;
-  max-width: 70%;
-}
-
-.message.received {
-  background-color: #ececec;
-  align-self: flex-start;
-}
-
-.message.sent {
-  background-color: #48576d;
-  color: white;
-  align-self: flex-end;
-}
-
-.chat-input {
-  display: flex;
-}
-
-.chat-input input {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px;
-}
-
-.chat-input button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #48576d;
-  color: white;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-}
-.devices-container-d {
-  display: flex;
-  height: 100%;
-  width: calc(100% - 70px);
-}
-
-.sidebar-device-d {
-  width: 300px;
-  background-color: #333;
-  box-shadow: 4px -1px 8px rgb(0 0 0 / 67%);
-  z-index: 10;
-  color: #fff;
-  padding: 20px;
-  overflow-y: auto;
-}
-.device-content-d {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  background-color: #f5f5f5;
-}
-
-/*devices css end here you should not go under this comment*/

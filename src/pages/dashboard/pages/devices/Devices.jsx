@@ -72,7 +72,7 @@ function Devices() {
           </div>
           {filteredUsers.map((user) => (
             <NavLink
-              to={`/dashboard/devices/${user.id}`}
+              to={`/devices/${user.id}`}
               key={user.id}
               className="chat-card"
             >

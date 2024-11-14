@@ -13,11 +13,11 @@ function App() {
   return (
     <div className="App">
 
-      {location.pathname!='/login' &&<Header />}
+      {location.pathname!=='/login' &&<Header />}
 
       <Routes>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/dashboard/*' element={<Dashboard/>}/>
+        <Route path='/*' element={<Dashboard/>}/>
       </Routes>
       {}
     </div>
