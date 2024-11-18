@@ -7,7 +7,7 @@ function Sidebar() {
       <ul className="sidebar-icons">
         <li>
           <NavLink
-            to="/overview"
+            to="/"
             className={({ isActive }) =>
               `nav-link ${isActive ? "active-tab" : ""}`
             }

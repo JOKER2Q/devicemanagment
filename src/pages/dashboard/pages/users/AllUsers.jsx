@@ -5,28 +5,37 @@ import { Link } from "react-router-dom";
 const AllUsers = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    axios.get("https://fakestoreapi.com/products?page=1&limit=10").then((res) => {
-      setData(res.data);
-    });
+    axios
+      .get("https://fakestoreapi.com/products?page=1&limit=10")
+      .then((res) => {
+        setData(res.data);
+      });
   }, []);
   const openOptions = (e) => {
     e.stopPropagation();
     const div = document.querySelectorAll("div.table tbody td div.options");
+    console.log(div);
+
     div.forEach((ele, i) => {
-      if (e.target !== ele) {
+      if (+e.target.dataset.index !== i) {
+        console.log(e.target);
         ele.classList.remove("active-div");
       }
     });
-    e.target.classList.toggle("active-div");
+    div[e.target.dataset.index].classList.toggle("active-div");
   };
-  const tableData = data?.map((e) => {
+  const tableData = data?.map((e, i) => {
     return (
       <tr key={e.id}>
         <td> {e.id} </td>
         <td> {e.title} </td>
         <td> {e.category} </td>
         <td>
-          <i onClick={openOptions} className="options fa-solid fa-ellipsis"></i>
+          <i
+            onClick={openOptions}
+            className="options fa-solid fa-ellipsis"
+            data-index={i}
+          ></i>
           <div className="options">
             <div
               onClick={(event) => {

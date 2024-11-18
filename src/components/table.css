@@ -207,9 +207,11 @@ div.table tbody td div.options {
   opacity: 0;
   z-index: 1;
   pointer-events: none;
+  transition: 0.6s;
 }
 div.table tbody td div.options.active-div {
   top: 80%;
+  opacity: 1;
 }
 div.table tbody td div.options div.delete {
   gap: 10px;

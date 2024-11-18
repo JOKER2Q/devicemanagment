@@ -13,7 +13,7 @@ function Dashboard() {
     <div className="dashboard-container">
       <Sidebar />
       <Routes>
-        <Route path="overview" element={<Overview />} />
+        <Route path="" element={<Overview />} />
         <Route path="devices" element={<Devices />}>
           <Route path=":userId" element={<DevicePage />} />{" "}
           {/* صفحة الجهاز كمسار فرعي */}
