@@ -4,8 +4,8 @@ import Sidebar from "./pages/Sidebar";
 import Overview from "./pages/Overview";
 import Devices from "./pages/devices/Devices";
 import Users from "./pages/users/Users";
-import Settings from "./pages/Settings";
-import Logs from "./pages/Logs";
+import Settings from "./pages/settings/Settings";
+import Logs from "./pages/logs/Logs";
 import DevicePage from "./pages/devices/DevicePage";
 
 function Dashboard() {

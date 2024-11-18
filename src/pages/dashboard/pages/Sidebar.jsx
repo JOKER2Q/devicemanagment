@@ -29,7 +29,7 @@ function Sidebar() {
         </li>
         <li>
           <NavLink
-            to="/users/All-users"
+            to="/users"
             className={({ isActive }) =>
               `nav-link ${isActive ? "active-tab" : ""}`
             }

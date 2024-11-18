@@ -1,5 +1,4 @@
 .users-container {
-  height: 100%;
   width: calc(100% - 70px);
   padding: 20px;
   background-color: #fff;
@@ -57,38 +56,163 @@
   margin-top: 10px;
 }
 /*ADD USER CSS STARTS HERE*/
+.add-user-form form {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
 .add-user-form {
-  max-width: 900px;
-  margin: 40px auto;
+  margin: 20px auto;
   padding: 30px;
-  background-color: #1c1c1c;
+  /* background-color: #1c1c1c; */
+  background-color: var(--body-color);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: background-color 0.3s, color 0.3s;
 }
 
 .add-user-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #ffffff;
+  text-align: left;
+  color: var(--font-color);
+  text-transform: capitalize;
+  margin-bottom: 30px;
+  font-size: 27px;
 }
 
 /* Form fields */
-.form-group {
-  margin-bottom: 20px;
+.add-user-form .form-group-user {
+  text-align: left;
+}
+/*select css*/
+.add-user-form .two-divs {
+  display: flex;
+  gap: 30px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.add-user-form .two-divs div {
+  width: 100%;
+  flex: 1 1;
+  min-width: 300px;
+}
+.add-user-form .two-divs .inp {
+  border: none;
+  padding: 10px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #333333;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: var(--font-color);
+  width: 100%;
+  position: relative;
+  background: #2c2c2c;
+}
+.add-user-form .two-divs .inp input {
+  position: relative;
+}
+.add-user-form .two-divs .inp input::before {
+  position: absolute;
+  content: "\f078";
+  font-weight: 900;
+  font-family: "Font Awesome 6 Free";
+  right: 10px;
+  top: 50%;
+  font-size: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
-label {
+.add-user-form .selecte {
+  position: relative;
+}
+.add-user-form .selecte .inp {
+  color: #d7d7d7;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  padding-right: 20px;
+}
+.add-user-form .selecte .inp::before {
+  position: absolute;
+  content: "\f078";
+  font-weight: 900;
+  font-family: "Font Awesome 6 Free";
+  right: 10px;
+  top: 50%;
+  font-size: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.add-user-form .selecte > article {
+  background-color: var(--body-color);
+  box-shadow: var(--box-shadow);
+  position: absolute;
+  width: 100%;
+  padding: 10px 15px;
+  top: 140%;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.add-user-form .selecte .inp.active + article {
+  transition: opacity 0.4s;
+  opacity: 1;
+  z-index: 2;
+  pointer-events: all;
+  top: 90%;
+}
+
+.add-user-form .selected-value {
+  gap: 5px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.add-user-form .selected-value span {
+  background-color: var(--section-color);
+  padding: 5px 10px;
+  text-transform: capitalize;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  color: var(--font-color);
+}
+
+.add-user-form .selected-value span:hover {
+  color: white;
+  background-color: var(--main-color);
+}
+
+.add-user-form .selecte > article h2 {
+  color: var(--font-color);
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 16px;
+
+  text-align: left;
+}
+.add-user-form .selecte > article:hover h2 {
+  opacity: 0.5;
+}
+.add-user-form .selecte > article h2:hover {
+  opacity: 1;
+}
+
+/*select css*/
+.add-user-form label {
   display: block;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: bold;
   margin-bottom: 8px;
   color: #d1d1d1;
 }
 
-input[type="text"],
-input[type="email"] {
+.add-user-form input {
   width: 100%;
   padding: 12px;
   border-radius: 6px;
@@ -99,46 +223,56 @@ input[type="email"] {
   color: #ffffff;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus {
+.add-user-form input[type="text"]:focus,
+.add-user-form input[type="email"]:focus {
   outline: none;
   border-color: #4caf50;
 }
 
 /* Checkbox group */
-.checkbox-group {
+.add-user-form .checkbox-group {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
-.checkbox-item {
+.add-user-form .checkbox-item {
   width: 100%;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
 }
 
-.checkbox-item input {
+.add-user-form .checkbox-item input {
   margin-right: 10px;
+  width: auto;
 }
 
-.checkbox-item label {
+.add-user-form .checkbox-item label {
   color: #d1d1d1;
-  font-size: 14px;
+  font-size: 18px;
+  flex: 1;
+  width: 100%;
+  line-height: 1;
+  margin-bottom: 0px;
+  margin-left: 10px;
 }
 
 /* Submit button */
-.submit-btn {
+.add-user-form .submit-btn {
   width: 100%;
   padding: 12px;
-  background-color: #4caf50;
   border: none;
   color: #fff;
   font-size: 16px;
   cursor: pointer;
   border-radius: 6px;
   transition: background-color 0.3s;
+  background-color: #0e6e11;
 }
 
-.submit-btn:hover {
-  background-color: #45a049;
+.add-user-form .submit-btn:hover {
+  background-color: #1e4a20;
 }
 /*ADD USER CSS ENDS HERE*/

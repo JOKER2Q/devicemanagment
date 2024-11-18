@@ -2,6 +2,7 @@ div.tabel-container {
   padding: 30px 20px;
   background-color: var(--body-color);
   border-radius: 6px;
+  margin: 20px 0px;
 }
 
 div.table {
@@ -74,7 +75,7 @@ div.table thead th {
   padding: 10px;
 }
 
-table .checkbox {
+div.checkbox {
   position: relative;
   width: 15px;
   height: 15px;
@@ -83,12 +84,14 @@ table .checkbox {
   cursor: pointer;
   overflow: hidden;
   border-radius: 4px;
-  border: solid 1px var(--font-color);
+  border: solid 1px #000;
+  transition: 2s;
 }
-table .checkbox.active {
+div.checkbox.active {
   border: solid 1px transparent;
+  transition: 2s;
 }
-table .checkbox::before {
+div.checkbox::before {
   content: "";
   width: 100%;
   height: 100%;
@@ -98,14 +101,15 @@ table .checkbox::before {
   top: 0;
   opacity: 0;
   transform: scale(0);
-  transition: 0.4s;
+  transition: 2s;
 }
-table .checkbox.active::before {
+div.checkbox.active::before {
   opacity: 1;
   transform: scale(1);
+  transition: 2s;
 }
 
-table .checkbox::after {
+div.checkbox::after {
   content: "✓";
   position: absolute;
   top: 50%;
@@ -116,11 +120,11 @@ table .checkbox::after {
   font-weight: bold;
   rotate: 28deg;
   opacity: 0;
-  transition: 0.4s;
+  transition: 2s;
 }
-table .checkbox.active::after {
+div.checkbox.active::after {
   rotate: 0deg;
-  transition: 0.4s;
+  transition: 2s;
   opacity: 1;
 }
 
@@ -212,6 +216,11 @@ div.table tbody td div.options {
 div.table tbody td div.options.active-div {
   top: 80%;
   opacity: 1;
+}
+.active-div {
+  opacity: 1 !important;
+  pointer-events: all !important;
+  z-index: 1 !important;
 }
 div.table tbody td div.options div.delete {
   gap: 10px;

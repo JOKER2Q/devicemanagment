@@ -5,110 +5,156 @@ const AddUser = () => {
   const [userData, setUserData] = useState({
     name: "",
     email: "",
+    password: "",
+    conf_password: "",
+    group: "",
+    role: "",
     permissions: [],
     devices: [],
   });
 
-  const permissionsList = ["Admin", "Editor", "Viewer"];
+  const permissionsList = ["Admin", "User", "Editor", "Viewer"];
   const devicesList = ["Device 1", "Device 2", "Device 3", "Device 4"];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUserData({
-      ...userData,
+    setUserData((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
-  const handleCheckboxChange = (e, type) => {
-    const { value, checked } = e.target;
-    let updatedList = [...userData[type]];
+  const handleCheckboxToggle = (type, value) => {
+    setUserData((prevState) => ({
+      ...prevState,
+      [type]: prevState[type].includes(value)
+        ? prevState[type].filter((item) => item !== value) // Remove if already selected
+        : [...prevState[type], value], // Add if not selected
+    }));
+  };
 
-    if (checked) {
-      updatedList.push(value); // Add the permission/device if checked
-    } else {
-      updatedList = updatedList.filter((item) => item !== value); // Remove if unchecked
-    }
-
-    setUserData({
-      ...userData,
-      [type]: updatedList,
-    });
+  const handleClick = (e) => {
+    e.stopPropagation();
+    e.target.classList.toggle("active");
+  };
+  const handleDropdownSelect = (e, type) => {
+    const selectedValue = e.target.textContent.trim();
+    setUserData((prevState) => ({
+      ...prevState,
+      [type]: selectedValue,
+    }));
+    const inpElement = e.target.closest(".selecte").querySelector(".inp");
+    inpElement.classList.remove("active");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("User Data Submitted:", userData);
-    // Handle form submission, such as sending data to backend
+    // Handle form submission logic, e.g., sending data to a backend
   };
+
+  // Reusable Checkbox Component
+  const CheckboxGroup = ({ type, items }) => (
+    <div className="checkbox-group">
+      {items.map((item) => (
+        <div key={item} className="checkbox-item">
+          <div
+            className={`checkbox ${
+              userData[type].includes(item) ? "active" : ""
+            }`}
+            onClick={() => handleCheckboxToggle(type, item)}
+          ></div>
+          <label>{item}</label>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <div className="add-user-form">
       <h2>Add New User</h2>
       <form onSubmit={handleSubmit}>
         {/* User Information */}
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={userData.name}
-            onChange={handleInputChange}
-            placeholder="Enter name"
-            required
-          />
+        <div className="form-group-user two-divs">
+          <div>
+            <label htmlFor="name">UserName:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={userData.name}
+              onChange={handleInputChange}
+              placeholder="Enter name"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="conf_password">Expiration Date:</label>
+            <input
+              type="date"
+              name="conf_password"
+              value={userData.conf_password}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={userData.password}
+              onChange={handleInputChange}
+              placeholder="Enter password"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="conf_password">Confirm Your Password:</label>
+            <input
+              type="password"
+              name="conf_password"
+              value={userData.conf_password}
+              onChange={handleInputChange}
+              placeholder="Confirm password"
+              required
+            />
+          </div>
+
+          <div className="selecte">
+            <label>Group:</label>
+            <div onClick={handleClick} className="inp">
+              {userData.group || "Select Group"}
+            </div>
+            <article>
+              <h2 onClick={(e) => handleDropdownSelect(e, "group")}>Test1</h2>
+              <h2 onClick={(e) => handleDropdownSelect(e, "group")}>Test2</h2>
+            </article>
+          </div>
+          <div className="selecte">
+            <label>Role:</label>
+            <div onClick={handleClick} className="inp">
+              {userData.role || "Select Role"}
+            </div>
+            <article>
+              <h2 onClick={(e) => handleDropdownSelect(e, "role")}>Role1</h2>
+              <h2 onClick={(e) => handleDropdownSelect(e, "role")}>Role2</h2>
+            </article>
+          </div>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={userData.email}
-            onChange={handleInputChange}
-            placeholder="Enter email"
-            required
-          />
-        </div>
-
-        {/* Permissions Checkbox */}
-        <div className="form-group">
+        {/* Permissions */}
+        <div className="form-group-user">
           <label>Permissions:</label>
-          <div className="checkbox-group">
-            {permissionsList.map((permission) => (
-              <div key={permission} className="checkbox-item">
-                <input
-                  type="checkbox"
-                  id={`permission-${permission}`}
-                  value={permission}
-                  checked={userData.permissions.includes(permission)}
-                  onChange={(e) => handleCheckboxChange(e, "permissions")}
-                />
-                <label htmlFor={`permission-${permission}`}>{permission}</label>
-              </div>
-            ))}
-          </div>
+          <CheckboxGroup type="permissions" items={permissionsList} />
         </div>
 
-        {/* Devices Checkbox */}
-        <div className="form-group">
+        {/* Devices */}
+        <div className="form-group-user">
           <label>Devices:</label>
-          <div className="checkbox-group">
-            {devicesList.map((device) => (
-              <div key={device} className="checkbox-item">
-                <input
-                  type="checkbox"
-                  id={`device-${device}`}
-                  value={device}
-                  checked={userData.devices.includes(device)}
-                  onChange={(e) => handleCheckboxChange(e, "devices")}
-                />
-                <label htmlFor={`device-${device}`}>{device}</label>
-              </div>
-            ))}
-          </div>
+          <CheckboxGroup type="devices" items={devicesList} />
         </div>
 
         {/* Submit Button */}
