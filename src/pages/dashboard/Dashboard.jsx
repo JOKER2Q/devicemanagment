@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Sidebar from "./pages/Sidebar";
 import Overview from "./pages/Overview";
 import Devices from "./pages/devices/Devices";
@@ -21,7 +21,8 @@ function Dashboard() {
         <Route path="devices" element={<Devices />}>
           <Route path=":userId" element={<DevicePage />}>
             {/* Nested routes under :userId */}
-            <Route path="" element={<FileManager />} />
+            <Route path="" element={<Navigate to="file-manager" />} />
+            <Route path="file-manager" element={<FileManager />} />
             <Route path="report-tab" element={<ReportDevice />} />
             <Route path=":tabId" element={<DeviceTable />} />
           </Route>

@@ -3,9 +3,9 @@ import {
   Link,
   NavLink,
   Outlet,
-  useParams,
   useLocation,
-} from "react-router-dom"; // Import useLocation for route handling
+  useParams,
+} from "react-router-dom"; // Import Link for navigation
 import "../css/Sidebar.css"; // Assuming your styles are here
 import { FileManager } from "@cubone/react-file-manager";
 import "@cubone/react-file-manager/dist/style.css";
@@ -15,7 +15,8 @@ function DevicePage() {
   const [navInput, setNavInput] = useState("");
   const [seconds, setSeconds] = useState(0);
   const [activeTab, setActiveTab] = useState("fileManager"); // Track the selected tab
-
+  const location = useLocation();
+  console.log(location);
   const [files, setFiles] = useState([
     {
       name: "Documents",
@@ -38,9 +39,6 @@ function DevicePage() {
     },
   ]);
 
-  const location = useLocation();
-
-  // Effect to update seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((prevSeconds) => prevSeconds + 1);
@@ -49,31 +47,12 @@ function DevicePage() {
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
-  // Format time
   const formatTime = () => {
     const hrs = String(Math.floor(seconds / 3600)).padStart(2, "0");
     const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
     const secs = String(seconds % 60).padStart(2, "0");
     return `${hrs}:${mins}:${secs}`;
   };
-
-  // Set active tab based on the current route
-  useEffect(() => {
-    const currentPath = location.pathname;
-    if (currentPath.includes("fileManager")) {
-      setActiveTab("fileManager");
-    } else if (currentPath.includes("tab1")) {
-      setActiveTab("tab1");
-    } else if (currentPath.includes("tab2")) {
-      setActiveTab("tab2");
-    } else if (currentPath.includes("tab3")) {
-      setActiveTab("tab3");
-    } else if (currentPath.includes("tab4")) {
-      setActiveTab("tab4");
-    } else if (currentPath.includes("report-tab")) {
-      setActiveTab("report-tab");
-    }
-  }, [location]);
 
   return (
     <div className="device">
@@ -151,29 +130,24 @@ function DevicePage() {
       <div className="tabs-header flex">
         {/* File Manager Tab */}
         <NavLink
-          to="fileManager"
-          className={`tab-button ${
-            activeTab === "fileManager" ? "active" : ""
-          }`}
+          to="file-manager"
+          className="tab-button"
+          isActive={() => true} // This will always be active by default
         >
           File Manager
         </NavLink>
 
         {/* Other Tabs */}
         {["tab1", "tab2", "tab3", "tab4"].map((tab) => (
-          <NavLink
-            key={tab}
-            to={`${tab}`}
-            className={`tab-button ${activeTab === tab ? "active" : ""}`}
-          >
+          <NavLink key={tab} to={`${tab}`} className={`tab-button `}>
             {tab.replace("tab", "Tab ")}
           </NavLink>
         ))}
 
         {/* Static Tab 5 */}
         <NavLink
-          to="report-tab"
-          className={`tab-button ${activeTab === "report-tab" ? "active" : ""}`}
+          to={"report-tab"}
+          className={`tab-button ${activeTab === "tab5" ? "active" : ""}`}
         >
           Tab 5
         </NavLink>

@@ -29,6 +29,8 @@
 .logs-page .logs-table thead {
   background-color: #0e6e11;
   color: white;
+  position: sticky;
+  top: 0;
 }
 
 .logs-page .logs-table th,
