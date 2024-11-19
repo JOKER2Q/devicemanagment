@@ -1,46 +1,55 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import "../css/Sidebar.css";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useParams,
+  useLocation,
+} from "react-router-dom"; // Import useLocation for route handling
+import "../css/Sidebar.css"; // Assuming your styles are here
 import { FileManager } from "@cubone/react-file-manager";
 import "@cubone/react-file-manager/dist/style.css";
-function DevicePage() {
-  const { userId } = useParams(); // للحصول على معرف المستخدم من URL
-  // استخدام معرف المستخدم لجلب بيانات المستخدم إذا كانت متوفرة في تطبيق حقيقي
 
+function DevicePage() {
+  const { userId } = useParams();
   const [navInput, setNavInput] = useState("");
   const [seconds, setSeconds] = useState(0);
   const [activeTab, setActiveTab] = useState("fileManager"); // Track the selected tab
+
   const [files, setFiles] = useState([
     {
       name: "Documents",
-      isDirectory: true, // Folder
-      path: "/Documents", // Located in Root directory
-      updatedAt: "2024-09-09T10:30:00Z", // Last updated time
+      isDirectory: true,
+      path: "/Documents",
+      updatedAt: "2024-09-09T10:30:00Z",
     },
     {
       name: "Pictures",
       isDirectory: true,
-      path: "/Pictures", // Located in Root directory as well
+      path: "/Pictures",
       updatedAt: "2024-09-09T11:00:00Z",
     },
     {
       name: "Pic.png",
-      isDirectory: false, // File
-      path: "/Pictures/Pic.png", // Located inside the "Pictures" folder
+      isDirectory: false,
+      path: "/Pictures/Pic.png",
       updatedAt: "2024-09-08T16:45:00Z",
-      size: 2048, // File size in bytes (example: 2 KB)
+      size: 2048,
     },
   ]);
+
+  const location = useLocation();
+
+  // Effect to update seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((prevSeconds) => prevSeconds + 1);
     }, 1000);
 
-    // Cleanup interval on component unmount
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
-  // Format the timer in HH:MM:SS
+  // Format time
   const formatTime = () => {
     const hrs = String(Math.floor(seconds / 3600)).padStart(2, "0");
     const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
@@ -48,32 +57,49 @@ function DevicePage() {
     return `${hrs}:${mins}:${secs}`;
   };
 
+  // Set active tab based on the current route
+  useEffect(() => {
+    const currentPath = location.pathname;
+    if (currentPath.includes("fileManager")) {
+      setActiveTab("fileManager");
+    } else if (currentPath.includes("tab1")) {
+      setActiveTab("tab1");
+    } else if (currentPath.includes("tab2")) {
+      setActiveTab("tab2");
+    } else if (currentPath.includes("tab3")) {
+      setActiveTab("tab3");
+    } else if (currentPath.includes("tab4")) {
+      setActiveTab("tab4");
+    } else if (currentPath.includes("report-tab")) {
+      setActiveTab("report-tab");
+    }
+  }, [location]);
+
   return (
     <div className="device">
+      {/* Device Header */}
       <div className="device-header flex">
         <div className="device-info">
           <Link to={``} className="info flex center">
             <i className="center photo fa-solid fa-user"></i>
             <article>
-              <h4>{`device : ${userId}`}</h4>
-              <p> test hello{userId}</p>
+              <h4>{`Device : ${userId}`}</h4>
+              <p>Test Hello {userId}</p>
             </article>
           </Link>
-          <div className="input-container  flex ">
+
+          {/* Input Container */}
+          <div className="input-container flex">
             <input
-              onInput={(e) => [setNavInput(e.target.value)]}
+              onInput={(e) => setNavInput(e.target.value)}
               value={navInput}
               type="text"
-              placeholder="Write some"
-              name=""
-              id=""
+              placeholder="Write something"
             />
-            {/* <label className="checkbox">
-              <input type="checkbox" value="mind" />
-              <span className="slider"></span>
-            </label> */}
           </div>
-          <div className="information flex ">
+
+          {/* Information Section */}
+          <div className="information flex">
             <div className="info-column flex column">
               <div className="info-div flex center">
                 <i className="fa-solid fa-location-dot"></i>
@@ -87,7 +113,7 @@ function DevicePage() {
             <div className="info-column flex column">
               <div className="info-div flex center">
                 <i className="fa-solid fa-wifi"></i>
-                <p>download speed</p>
+                <p>Download speed</p>
               </div>
               <div className="info-div flex center">
                 <i className="fa-solid fa-bolt"></i>
@@ -96,109 +122,66 @@ function DevicePage() {
             </div>
             <div className="info-column flex column">
               <div className="info-div flex center">
-                <div className="time-now"> {formatTime()} </div>
+                <div className="time-now">{formatTime()}</div>
                 <p>Timer</p>
               </div>
               <div className="info-div flex center">
-                <div className="time-now"> 24/2/26 </div>
+                <div className="time-now">24/2/26</div>
                 <p>Date</p>
               </div>
             </div>
             <div className="info-column flex column">
               <div className="info-div flex center">
-                <i class="fa-solid fa-file"></i>
-                <p>choose path</p>
+                <i className="fa-solid fa-file"></i>
+                <p>Choose path</p>
               </div>
               <div className="info-div flex center">
                 <label className="checkbox">
-                  <input type="checkbox" value="mind" />
+                  <input type="checkbox" />
                   <span className="slider"></span>
                 </label>
-                <p>auto</p>
+                <p>Auto</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       {/* Tabs Header */}
       <div className="tabs-header flex">
-        <button
+        {/* File Manager Tab */}
+        <NavLink
+          to="fileManager"
           className={`tab-button ${
             activeTab === "fileManager" ? "active" : ""
           }`}
-          onClick={() => setActiveTab("fileManager")}
         >
           File Manager
-        </button>
-        <button
-          className={`tab-button ${activeTab === "tab2" ? "active" : ""}`}
-          onClick={() => setActiveTab("tab2")}
-        >
-          Tab 2
-        </button>
-        <button
-          className={`tab-button ${activeTab === "tab3" ? "active" : ""}`}
-          onClick={() => setActiveTab("tab3")}
-        >
-          Tab 3
-        </button>
-        <button
-          className={`tab-button ${activeTab === "tab4" ? "active" : ""}`}
-          onClick={() => setActiveTab("tab4")}
-        >
-          Tab 4
-        </button>
-        <button
-          className={`tab-button ${activeTab === "tab5" ? "active" : ""}`}
-          onClick={() => setActiveTab("tab5")}
+        </NavLink>
+
+        {/* Other Tabs */}
+        {["tab1", "tab2", "tab3", "tab4"].map((tab) => (
+          <NavLink
+            key={tab}
+            to={`${tab}`}
+            className={`tab-button ${activeTab === tab ? "active" : ""}`}
+          >
+            {tab.replace("tab", "Tab ")}
+          </NavLink>
+        ))}
+
+        {/* Static Tab 5 */}
+        <NavLink
+          to="report-tab"
+          className={`tab-button ${activeTab === "report-tab" ? "active" : ""}`}
         >
           Tab 5
-        </button>
-        <button
-          className={`tab-button ${activeTab === "tab6" ? "active" : ""}`}
-          onClick={() => setActiveTab("tab6")}
-        >
-          Tab 6
-        </button>
+        </NavLink>
       </div>
 
       {/* Tabs Content */}
-      <div className="tabs-content file-manager">
-        {activeTab === "fileManager" && (
-          <div className="tab-content">
-            <FileManager files={files} />
-          </div>
-        )}
-        {activeTab === "tab2" && (
-          <div className="tab-content">
-            <h3>Tab 2</h3>
-            <p>Content for Tab 2.</p>
-          </div>
-        )}
-        {activeTab === "tab3" && (
-          <div className="tab-content">
-            <h3>Tab 3</h3>
-            <p>Content for Tab 3.</p>
-          </div>
-        )}
-        {activeTab === "tab4" && (
-          <div className="tab-content">
-            <h3>Tab 4</h3>
-            <p>Content for Tab 4.</p>
-          </div>
-        )}
-        {activeTab === "tab5" && (
-          <div className="tab-content">
-            <h3>Tab 5</h3>
-            <p>Content for Tab 5.</p>
-          </div>
-        )}
-        {activeTab === "tab6" && (
-          <div className="tab-content">
-            <h3>Tab 6</h3>
-            <p>Content for Tab 6.</p>
-          </div>
-        )}
+      <div className="tabs-content">
+        <Outlet />
       </div>
     </div>
   );

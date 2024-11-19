@@ -1,8 +1,53 @@
 .logs {
   height: 100%;
   width: calc(100% - 70px);
-  padding: 20px;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.logs-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.logs-page h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logs-page .logs-table-div {
+  max-height: 500px;
+  overflow: auto;
+}
+.logs-page .logs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logs-page .logs-table thead {
+  background-color: #0e6e11;
+  color: white;
+}
+
+.logs-page .logs-table th,
+.logs-page .logs-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.logs-page .logs-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.logs-page .logs-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.logs-page .logs-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-weight: bold;
 }
