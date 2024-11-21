@@ -1,9 +1,14 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 function Sidebar() {
+  const location = useLocation();
+  useEffect(() => {
+    const sideBar = document.querySelector(".sidebar");
+    sideBar?.classList.remove("active-sidebar");
+  }, [location.pathname]);
   return (
-    <div className="sidebar">
+    <div className="sidebar ">
       <ul className="sidebar-icons">
         <li>
           <NavLink

@@ -15,8 +15,9 @@ function DevicePage() {
   const [navInput, setNavInput] = useState("");
   const [seconds, setSeconds] = useState(0);
   const [activeTab, setActiveTab] = useState("fileManager"); // Track the selected tab
+
   const location = useLocation();
-  console.log(location);
+ 
   const [files, setFiles] = useState([
     {
       name: "Documents",
@@ -66,9 +67,8 @@ function DevicePage() {
               <p>Test Hello {userId}</p>
             </article>
           </Link>
-
-          {/* Input Container */}
           <div className="input-container flex">
+            {/* Input Container */}
             <input
               onInput={(e) => setNavInput(e.target.value)}
               value={navInput}

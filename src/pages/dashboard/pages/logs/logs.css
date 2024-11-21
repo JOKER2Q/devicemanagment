@@ -53,3 +53,26 @@
   padding-bottom: 12px;
   font-weight: bold;
 }
+@media (max-width: 1200px) {
+  .chat-card i {
+    font-size: 20px;
+    color: var(--font-color);
+    padding: 7px;
+  }
+}
+@media (max-width: 900px) {
+  .logs {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .logs-page {
+    padding: 10px;
+  }
+}
+@media (max-width: 400px) {
+  .logs-page .logs-table th,
+  .logs-page .logs-table td {
+    font-size: 13px;
+  }
+}

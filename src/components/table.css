@@ -494,3 +494,21 @@ table.time-table tbody tr .delete {
 .table .green-btn i {
   font-size: 15px;
 }
+@media (max-width: 900px) {
+  div.table {
+    min-width: auto;
+  }
+  div.tabel-container {
+    padding: 10px 7px;
+  }
+}
+@media (max-width: 600px) {
+  div.table thead th {
+    font-size: 16px;
+    color: white;
+    padding: 6px;
+  }
+  div.table tbody td {
+    font-size: 16px;
+  }
+}

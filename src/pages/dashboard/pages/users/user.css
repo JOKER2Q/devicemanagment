@@ -276,3 +276,17 @@
   background-color: #1e4a20;
 }
 /*ADD USER CSS ENDS HERE*/
+@media (max-width: 900px) {
+  .users-container {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .users-container {
+    padding: 20px 5px;
+  }
+  .users-container .tab-button {
+    padding: 9px 10px;
+    font-size: 14px;
+  }
+}

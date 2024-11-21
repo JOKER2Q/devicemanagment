@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import "../css/Sidebar.css";
 import "./device.css";
 
 function Devices() {
+  const location = useLocation();
   const users = [
     {
       id: 1,
@@ -48,7 +49,11 @@ function Devices() {
       imgSrc: "path/to/profile3.jpg",
     },
   ];
-
+  useEffect(() => {
+    const deviceBar = document.querySelector(".mini-sidebar-device-d");
+    deviceBar.classList.remove("mini-sidebar-device-d-active");
+    console.log(deviceBar);
+  }, [location.pathname]);
   const [activeTab, setActiveTab] = useState("online");
   const filteredUsers = users.filter((user) => user.status === activeTab);
 
@@ -77,6 +82,34 @@ function Devices() {
               className="chat-card"
             >
               <i class="fa-regular fa-hard-drive"></i>
+              <div className="chat-info">
+                <h3 className="chat-name">{user.name}</h3>
+                <p className="chat-type">{user.type}</p>
+              </div>
+            </NavLink>
+          ))}
+        </div>
+        <div className="mini-sidebar-device-d">
+          <div className="tabs">
+            <div
+              className={`tab ${activeTab === "online" ? "active" : ""}`}
+              onClick={() => setActiveTab("online")}
+            >
+              Online
+            </div>
+            <div
+              className={`tab ${activeTab === "offline" ? "active" : ""}`}
+              onClick={() => setActiveTab("offline")}
+            >
+              Offline
+            </div>
+          </div>
+          {filteredUsers.map((user) => (
+            <NavLink
+              to={`/devices/${user.id}`}
+              key={user.id}
+              className="chat-card"
+            >
               <div className="chat-info">
                 <h3 className="chat-name">{user.name}</h3>
                 <p className="chat-type">{user.type}</p>

@@ -456,7 +456,6 @@
 }
 
 .device .tab-content .search-field {
-  width: 250px;
   padding: 8px 12px;
   font-size: 14px;
   border: 1px solid #ddd;
@@ -475,13 +474,14 @@
   color: #666;
   font-weight: 500;
   text-align: right;
-  width: 180px;
   margin-right: 10px;
   flex: 1;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
-
+.device .tab-content .date-timer > div {
+  flex: 1;
+}
 .device .tab-content .date-timer h1 {
   font-size: 20px;
   line-height: 1;
@@ -576,16 +576,166 @@
   border-color: #4a90e2;
   outline: none;
 }
+.icon-device {
+  display: none;
+  position: relative;
+}
+.icon-device:hover {
+  transform: scale(1.1);
+}
+.icon-device i {
+  cursor: pointer;
+  padding: 0px 3px;
+}
+.icon-device::before {
+  position: absolute;
+  content: "";
+  border: 5px solid #000;
+  left: 100%;
+  top: 60%;
+  border-color: #3e3e3e transparent transparent transparent;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.mini-sidebar-device-d {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  background: #000;
+  z-index: 100;
+  left: 0;
+  gap: 20px;
+  padding: 20px 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  top: -100%;
+  opacity: 0;
+  transition: 0.4s;
+}
 
+.mini-sidebar-device-d .tab.active {
+  color: #000;
+}
+.mini-sidebar-device-d .tab {
+  color: #ffffff;
+}
+.mini-sidebar-device-d .chat-card {
+  margin-top: 0;
+}
+.mini-sidebar-device-d .chat-card .chat-info {
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  padding: 10px 0px;
+}
+.mini-sidebar-device-d .chat-card .chat-info h3 {
+  font-size: 1em;
+}
+.mini-sidebar-device-d .chat-card .chat-info p {
+  font-size: 0.7em;
+  margin: 0;
+  align-items: center;
+}
 /* Responsive Design */
-@media screen and (max-width: 768px) {
-  .devicePage-container {
-    flex-direction: column;
+@media (max-width: 1200px) {
+  .sidebar-device-d {
+    position: absolute;
+    left: -100%;
+    height: calc(100vh - 50px);
+    transition: 0.4s;
+    display: none;
   }
-
-  .devicePage-left,
-  .devicePage-right {
-    flex: 1 1 100%;
+  .mini-sidebar-device-d-active {
+    top: calc(0% + 50px);
+    opacity: 1;
+    background: #00000069;
+    backdrop-filter: blur(11px);
+  }
+  .active-sidebar-device-d {
+  }
+  .icon-device {
+    display: block;
+  }
+}
+.device .tab-content .table-header {
+  flex-wrap: wrap;
+}
+@media (max-width: 900px) {
+  .devices-container-d {
+    width: 100%;
+  }
+  .device-header .input-container input[type="text"] {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .device-content-d {
+    padding: 20px 5px;
+  }
+  .device-header .device-info {
+    flex-wrap: wrap;
+  }
+  .device-header .device-info .information {
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .device .tabs-header {
+    flex-wrap: wrap;
+  }
+  .device .tab-button {
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 775px) {
+  .device .tab-content .date-timer {
+    flex-basis: 100%;
+    flex-direction: row-reverse;
+    gap: 30px;
+    justify-content: flex-end;
+  }
+  .device .tab-content .table-header {
+    row-gap: 10px;
+  }
+  .device .tab-content .date-timer > div {
+    flex: 1;
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-width: 430px) {
+  .device-header .input-container {
+    flex-basis: 100%;
+  }
+  .device .tab-content .date-timer h1 {
+    font-size: 15px;
+    line-height: 1;
+    margin-left: 5px;
+  }
+  .device .tab-content .table-header {
+    column-gap: 10px;
+  }
+  .device .tab-content .date-timer {
+    gap: 10px;
+  }
+  .device .tabs-content{
+    padding: 20px 8px;
+  }
+}
+@media screen and (max-width: 390px) {
+  .device .tab-content .table-header {
+    padding: 15px 7px;
+  }
+  .device .tab-content .reload-button,
+  .device .tab-content .expand-button {
+    padding: 7px 7px;
+  }
+  .device .tab-content .date-timer p {
+    font-size: 11px;
+  }
+  .statusSection {
+    gap: 15px;
   }
 }
 /*devices css end here you should not go under this comment*/

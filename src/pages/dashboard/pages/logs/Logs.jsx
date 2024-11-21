@@ -30,6 +30,21 @@ const Logs = () => {
             </NavLink>
           ))}
         </div>
+        <div className="mini-sidebar-device-d">
+          {users.map((user) => (
+            <NavLink
+              to={`/logs/${user.id}`} // Navigate to the LogsPage with the user's ID
+              key={user.id}
+              className="chat-card"
+            >
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <div className="chat-info">
+                <h3 className="chat-name">{user.name}</h3>
+                <p className="chat-type">{user.type}</p>
+              </div>
+            </NavLink>
+          ))}
+        </div>
         <div className="device-content-d">
           <Outlet /> {/* لعرض محتوى الصفحة الفرعية (DevicePage) هنا */}
         </div>

@@ -76,21 +76,23 @@ const DeviceTable = () => {
 
         {/* Date/Timer */}
         <div className="date-timer flex">
-          <p>
-            {time} | {date}
-          </p>
-          <h1>Last Update</h1>
-        </div>
+          <div className="flex center">
+            <p>
+              {time} | {date}
+            </p>
+            <h1>Last Update</h1>
+          </div>
 
-        {/* Expand Button */}
-        <button onClick={toggleExpand} className="expand-button">
-          <i className="fa-solid fa-up-right-and-down-left-from-center"></i>
-        </button>
+          {/* Expand Button */}
+          <button onClick={toggleExpand} className="expand-button">
+            <i className="fa-solid fa-up-right-and-down-left-from-center"></i>
+          </button>
+        </div>
       </div>
 
       {/* Table Content */}
       {expanded && (
-        <table className="tab-content-table">
+        <table className="tab-content-table table">
           <thead>
             <tr>
               <th>{tabId}</th>
