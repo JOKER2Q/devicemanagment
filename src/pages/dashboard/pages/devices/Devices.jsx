@@ -52,7 +52,6 @@ function Devices() {
   useEffect(() => {
     const deviceBar = document.querySelector(".mini-sidebar-device-d");
     deviceBar.classList.remove("mini-sidebar-device-d-active");
-    console.log(deviceBar);
   }, [location.pathname]);
   const [activeTab, setActiveTab] = useState("online");
   const filteredUsers = users.filter((user) => user.status === activeTab);

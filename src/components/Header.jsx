@@ -3,26 +3,27 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 function Header() {
-  const location = useLocation()
+  const location = useLocation();
   const headerClick = () => {
     const sideBar = document.querySelector(".sidebar");
-    console.log(sideBar);
     sideBar?.classList.toggle("active-sidebar");
   };
   const devicesClick = () => {
     const sideBar = document.querySelector(".mini-sidebar-device-d");
-    console.log(sideBar);
     sideBar?.classList.toggle("mini-sidebar-device-d-active");
   };
   return (
     <div className="header">
       <div className="statusSection">
         <div onClick={headerClick} className="icon-header">
-          <i class="fa-solid fa-bars-staggered"></i>
+          <i className="fa-solid fa-bars-staggered"></i>
         </div>
-       {(location.pathname.includes("devices") || location.pathname.includes("logs")  )&& <div onClick={devicesClick} className="icon-device">
-          <i class="fa-regular fa-hard-drive"></i>
-        </div>}
+        {(location.pathname.includes("devices") ||
+          location.pathname.includes("logs")) && (
+          <div onClick={devicesClick} className="icon-device">
+            <i class="fa-regular fa-hard-drive"></i>
+          </div>
+        )}
         <div className="statusItem">
           <span className="statusText">Online</span>
           <span className="statusNumber">12</span>

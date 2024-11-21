@@ -1,8 +1,13 @@
-.settings{
-    height: 100%;
-    width: calc(100% - 70px);
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.settings {
+  height: 100%;
+  width: calc(100% - 70px);
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 900px) {
+  .settings {
+    width: 100%;
+  }
 }
