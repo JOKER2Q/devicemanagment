@@ -132,7 +132,6 @@ function DevicePage() {
         <NavLink
           to="file-manager"
           className="tab-button"
-          isActive={() => true} // This will always be active by default
         >
           File Manager
         </NavLink>

@@ -50,8 +50,16 @@ function Devices() {
     },
   ];
   useEffect(() => {
+    if (location.pathname !== "/devices") {
+      const deviceBar = document.querySelector(".mini-sidebar-device-d");
+      deviceBar.classList.remove("mini-sidebar-device-d-active");
+    }
+  }, [location.pathname]);
+  useEffect(() => {
     const deviceBar = document.querySelector(".mini-sidebar-device-d");
-    deviceBar.classList.remove("mini-sidebar-device-d-active");
+    if (location.pathname === "/devices") {
+      deviceBar?.classList.add("mini-sidebar-device-d-active");
+    }
   }, [location.pathname]);
   const [activeTab, setActiveTab] = useState("online");
   const filteredUsers = users.filter((user) => user.status === activeTab);
@@ -80,7 +88,7 @@ function Devices() {
               key={user.id}
               className="chat-card"
             >
-              <i class="fa-regular fa-hard-drive"></i>
+              <i className="fa-regular fa-hard-drive"></i>
               <div className="chat-info">
                 <h3 className="chat-name">{user.name}</h3>
                 <p className="chat-type">{user.type}</p>

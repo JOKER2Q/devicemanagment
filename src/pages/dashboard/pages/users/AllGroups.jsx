@@ -56,8 +56,8 @@ const AllGroups = () => {
     );
   });
   return (
-    <div class="tabel-container">
-      <div class="table">
+    <div className="tabel-container">
+      <div className="table">
         <table>
           <thead>
             <tr>
